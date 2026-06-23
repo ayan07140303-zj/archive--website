@@ -23,7 +23,7 @@ const upload = multer({ storage, limits: { fileSize: 50 * 1024 * 1024 } });
 const router = Router();
 
 // GET /api/v1/cases
-router.get('/', optionalAuth, async (req: Request, res: Response) => {
+router.get('/', async (req: Request, res: Response) => {
   try {
     const { status, search, priority, category, topic_id, achievement_type, target_audience, consulting_form, page: p, pageSize: ps } = req.query;
     const page = parseInt(p as string) || 1;
