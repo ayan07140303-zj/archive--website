@@ -1,4 +1,4 @@
-const BASE_URL = '/api/v1';
+const BASE_URL = 'https://archive-backend-r7gu.onrender.com/api/v1';
 
 interface ApiResponse<T = any> {
   success: boolean;
