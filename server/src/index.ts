@@ -25,7 +25,12 @@ const app = express();
 const PORT = parseInt(process.env.PORT || '4000');
 
 // ─── 全局中间件 ───
-app.use(cors({ origin: ['http://localhost:3000', 'http://localhost:5173'], credentials: true }));
+app.use(cors({ origin: ['http://localhost:3000', 
+    'http://localhost:5173',
+    'https://archive--website.pages.dev',
+    'https://archive--website.ayan07140303.workers.dev',
+    'https://*.pages.dev'  ], 
+    credentials: true }));
 app.use(express.json());
 app.use('/api/v1/uploads', express.static(path.resolve(__dirname, '../uploads')));
 
