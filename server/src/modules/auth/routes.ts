@@ -5,7 +5,6 @@ import path from 'path';
 import crypto from 'crypto';
 import { queryOne } from '../../db.js';
 import { signToken, requireAuth } from '../../middleware/auth.js';
-import type { User, JwtPayload } from '../../types/index.js';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -32,7 +31,7 @@ router.post('/login', async (req: Request, res: Response) => {
       return;
     }
 
-    const user = await queryOne<User>('SELECT * FROM users WHERE email = $1 AND status = $2', [email, 'active']);
+    const user = await queryOne('SELECT * FROM users WHERE email = $1 AND status = $2', [email, 'active']);
     if (!user) {
       res.status(401).json({ success: false, error: { code: 'UNAUTHORIZED', message: '邮箱或密码错误' } });
       return;
